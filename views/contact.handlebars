@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Appli mail ExpressJS</title>
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet" />
+  <link rel="stylesheet" href="public/css/style.css">
+  <link href="https://fonts.googleapis.com/css?family=Noto+Sans" rel="stylesheet">
+  <script src='https://www.google.com/recaptcha/api.js'></script>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+</head>
+<body>
+  
+  <div class="container">
+    <div class="wrapper animated bounceInLeft">
+      <div class="contact">
+        <h3>Envoyer une carte Trello</h3>
+        <form method="POST" action="send" enctype="multipart/form-data" id="subscribeForm">
+          <p>
+            <input type="text" name="name" id="name" placeholder="Titre">
+          </p>
+          <p class="full">
+            <textarea name="message" rows="5" id="message" placeholder="Description"></textarea>
+          </p>       
+          <div class="form-group">
+            <input type="file" name="img[]" class="file">
+            <div class="input-group col-xs-12">
+              <span class="input-group-addon"><i class="glyphicon glyphicon-picture"></i></span>
+              <input type="text" class="form-control input-lg" placeholder="Fichier joint">
+              <span class="input-group-btn">
+                <button class="browse btn btn-primary input-lg" type="button"><i class="glyphicon glyphicon-search"></i> Rechercher</button>
+              </span>
+            </div>
+          </div>
+          <div class="form-group">
+            <div class="g-recaptcha" data-sitekey="6LcqNDoUAAAAALLJfFDtMXatGxmDr-VkrdSSiXoI"></div>
+            {{msg}}
+          </div>
+          <p>
+            <button type="submit" value="Upload" class="btn btn-success">Envoyer</button>
+          </p> 
+        </form>
+      </div>
+    </div>
+  </div>
+
+  <script>
+      $(document).on('click', '.browse', function(){
+        var file = $(this).parent().parent().parent().find('.file');
+        file.trigger('click');
+      });
+      $(document).on('change', '.file', function(){
+        $(this).parent().find('.form-control').val($(this).val().replace(/C:\\fakepath\\/i, ''));
+      });
+  </script>
+
+</body>
+</html>
