@@ -19,13 +19,13 @@
         <h3>Envoyer une carte Trello</h3>
         <form method="POST" action="send" enctype="multipart/form-data" id="subscribeForm">
           <p>
-            <input type="text" name="name" id="name" placeholder="Titre">
+            <input type="text" name="title" id="title" placeholder="Titre">
           </p>
           <p class="full">
-            <textarea name="message" rows="5" id="message" placeholder="Description"></textarea>
+            <textarea name="description" rows="5" id="description" placeholder="Description"></textarea>
           </p>       
           <div class="form-group">
-            <input type="file" name="img[]" class="file">
+            <input type="file" name="file" class="file">
             <div class="input-group col-xs-12">
               <span class="input-group-addon"><i class="glyphicon glyphicon-picture"></i></span>
               <input type="text" class="form-control input-lg" placeholder="Fichier joint">
@@ -36,7 +36,9 @@
           </div>
           <div class="form-group">
             <div class="g-recaptcha" data-sitekey="6LcqNDoUAAAAALLJfFDtMXatGxmDr-VkrdSSiXoI"></div>
-            {{msg}}
+            <div class="msg">
+              {{msg}}
+            </div>
           </div>
           <p>
             <button type="submit" value="Upload" class="btn btn-success">Envoyer</button>

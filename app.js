@@ -24,7 +24,6 @@ app.use(fileUpload());
 
 app.get('/', (req, res) => {
     res.render('contact');
-    
 });
 
 app.get('/send', function(req, res){
@@ -32,6 +31,15 @@ app.get('/send', function(req, res){
 })
 
 app.post('/send', (req, res) => {
+    var title = req.body['title'];
+    if(
+        title === undefined || 
+        title === '' || 
+        title === null 
+    ){
+        return res.render('contact', {msg:'Merci de mettre un titre à la carte.'});
+    }
+
     var captcha = req.body['g-recaptcha-response'];
 
     if(
@@ -39,8 +47,7 @@ app.post('/send', (req, res) => {
        captcha === '' || 
        captcha === null 
     ){
-        //return res.json({"success": false, "msg":"Please select captcha"});
-        return res.render('contact', {msg:'Merci de remplir le captcha'});
+        return res.render('contact', {msg:'Merci de remplir le captcha.'});
     }
 
     // Verify URL
@@ -61,11 +68,10 @@ app.post('/send', (req, res) => {
     });
 
     const output = `
-      <h3>${req.body.name}</h3>
+      <h3>${req.body.title}</h3>
       <h3>Message</h3>
-      <p>${req.body.message}</p>
+      <p>${req.body.description}</p>
       <h3>Pièces jointes</h3>
-      ${req.body.file}
     `;
 
      var mailAttachments = [];
@@ -81,9 +87,8 @@ app.post('/send', (req, res) => {
                 content: file.data,
                 contentType: file.mimetype
             });
-        
-        }
-
+         }
+  
         // create reusable transporter object using the default SMTP transport
         let transporter = nodemailer.createTransport({
             host: config.mailOptions.host, 
@@ -111,12 +116,12 @@ app.post('/send', (req, res) => {
         transporter.sendMail(mailOptions, (error, info) => {
             if (error) {
                 return console.log(error);
-                return res.render('contact', {msg:"L'envoi de votre Email a échoué"});
+                return res.render('contact', {msg:"L'envoi de votre Email a échoué."});
             }
             console.log('Message sent: %s', info.messageId);
             console.log('Preview URL: %s', nodemailer.getTestMessageUrl(info));
 
-            res.render('contact', {msg:'Votre Email a bien été envoyé'});
+            res.render('contact', {msg:'Votre carte Trello a bien été envoyée.'});
         });
     });
 

@@ -5,9 +5,8 @@
 body{
   line-height:1.6;
   font-family: 'Noto Sans', sans-serif;
-  background:url(img/blur-background.jpg) no-repeat;
-  position: absolute;
-  margin: 0;
+  background:url(img/blur-background.jpg) no-repeat fixed;
+  margin: 0px;
 }
 
 .container{
@@ -95,6 +94,10 @@ input.form-control.input-lg{
   margin:0;
 }
 
+.msg{
+  color: #fff;
+}
+
 /*XXXXXXXXXXXXXXXXXXXXXXXXXX  MEDIA QUERIES XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX*/
 								              /*TABLETTE*/
 /*XXXXXXXXXXXXXXXXXXXXXXXXXX  MEDIA QUERIES XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX*/
@@ -127,7 +130,7 @@ input.form-control.input-lg{
 /*XXXXXXXXXXXXXXXXXXXXXXXXXX  MEDIA QUERIES XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX*/
 
 @media screen and (max-width: 700px) {
-
+  
     .container{
       width:95%;
       margin: 2.5%;
@@ -137,7 +140,7 @@ input.form-control.input-lg{
 
      .wrapper{
       padding: 0.5em 1em;
-      width: 80%;
+      width: 82%;
       margin: 2%;
     }
 
