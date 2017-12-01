@@ -5,8 +5,13 @@
 body{
   line-height:1.6;
   font-family: 'Noto Sans', sans-serif;
-  background:url(img/blur-background.jpg) no-repeat fixed;
+  background:url(img/blur-background.jpg);
   margin: 0px;
+  background-position: center;
+	background-repeat: no-repeat; 
+	background-attachment: fixed; 
+	background-size: cover; 
+	padding: 0px;
 }
 
 .container{
@@ -16,7 +21,7 @@ body{
 }
 
 .wrapper{
-  background: rgba(0,0,0,0.3);
+  background: rgba(0,0,0,0.27);
   padding: 0.5em 1.5em;
   width: 100%;
   border-radius: 10px;
@@ -74,9 +79,8 @@ body{
     margin-bottom: 1.1em;
 }
 
-.file {
-  visibility: hidden;
-  position: absolute;
+.form-group .file {
+  display:none;
 }
 
 .btn.btn-primary {
@@ -132,8 +136,8 @@ input.form-control.input-lg{
 @media screen and (max-width: 700px) {
   
     .container{
-      width:95%;
-      margin: 2.5%;
+      width:100%;
+      margin: 7.3%;
       padding-left:0;
       padding-right: 0;
       }
@@ -156,7 +160,7 @@ input.form-control.input-lg{
       margin-top: 1.5em;
       margin-bottom: 0;
       margin-left: 0;
-      margin-right: 0;
+      margin-right:0;
       padding: 0;
     }
     
@@ -173,6 +177,7 @@ input.form-control.input-lg{
     .form-group{
       padding:0;
       width: 100%;
+      margin-bottom: 0;
     }
 
     .btn.btn-primary {

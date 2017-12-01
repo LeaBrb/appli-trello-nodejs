@@ -88,7 +88,7 @@ app.post('/send', (req, res) => {
                 contentType: file.mimetype
             });
          }
-  
+
         // create reusable transporter object using the default SMTP transport
         let transporter = nodemailer.createTransport({
             host: config.mailOptions.host, 
